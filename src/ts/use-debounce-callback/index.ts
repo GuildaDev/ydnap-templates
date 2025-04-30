@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 
-export default function useDebouncedCallback<
-  T extends (...args: any[]) => void,
->(callback: T, delay: number) {
+export default function useDebounceCallback<T extends (...args: any[]) => void>(
+  callback: T,
+  delay: number
+) {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const lastArgs = useRef<Parameters<T>>();
 
@@ -35,7 +36,7 @@ export default function useDebouncedCallback<
   }
 
   return {
-    debounced: debouncedFunction,
+    debounce: debouncedFunction,
     cancel,
     flush,
   };

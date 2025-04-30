@@ -18,7 +18,7 @@ const DEBOUNCE_ERR_KEY = 'Key is required for debouncing';
  * @throws {TypeError} If the provided key is not a valid primitive type (e.g.,
  * string, number, or symbol).
  */
-export default function useKeyedDebouncedCallback<
+export default function useKeyedDebounceCallback<
   T extends (...args: any[]) => void,
 >(callback: T, delay: number) {
   const timeouts = useRef(

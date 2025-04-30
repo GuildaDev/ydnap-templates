@@ -1,6 +1,6 @@
 import { expect, it, describe, vi, beforeEach } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import useKeyedDebouncedCallback from '.';
+import useKeyedDebounceCallback from '.';
 
 const getSomeData = vi.fn(
   (id: number, quantity: number, options: { obj?: boolean }) => {
@@ -13,14 +13,14 @@ const getSomeData = vi.fn(
 );
 const debounceTime = 10;
 
-describe('useKeyedDebouncedCallback', () => {
+describe('useKeyedDebounceCallback', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
   it('Should call many callbacks and execute the last one', async () => {
     const { result } = renderHook(() =>
-      useKeyedDebouncedCallback(getSomeData, debounceTime)
+      useKeyedDebounceCallback(getSomeData, debounceTime)
     );
 
     // Call the debounced callback without key, it will debounce by default
@@ -40,7 +40,7 @@ describe('useKeyedDebouncedCallback', () => {
 
   it('Should cancel the debounced callbacks', async () => {
     const { result } = renderHook(() =>
-      useKeyedDebouncedCallback(getSomeData, debounceTime)
+      useKeyedDebounceCallback(getSomeData, debounceTime)
     );
 
     // Call the debounced callback without key, it will debounce by default
@@ -60,7 +60,7 @@ describe('useKeyedDebouncedCallback', () => {
 
   it('Should flush the debounced callbacks', async () => {
     const { result } = renderHook(() =>
-      useKeyedDebouncedCallback(getSomeData, 100000000)
+      useKeyedDebounceCallback(getSomeData, 100000000)
     );
 
     // Call the debounced callback without key, it will debounce by default
@@ -82,7 +82,7 @@ describe('useKeyedDebouncedCallback', () => {
 
   it('Should flush all the debounced callbacks', async () => {
     const { result } = renderHook(() =>
-      useKeyedDebouncedCallback(getSomeData, 100000000)
+      useKeyedDebounceCallback(getSomeData, 100000000)
     );
 
     // Call the debounced callback without key, it will debounce by default
@@ -104,7 +104,7 @@ describe('useKeyedDebouncedCallback', () => {
 
   it('Should cancel the debounced callbacks', async () => {
     const { result } = renderHook(() =>
-      useKeyedDebouncedCallback(getSomeData, debounceTime)
+      useKeyedDebounceCallback(getSomeData, debounceTime)
     );
 
     // Call the debounced callback without key, it will debounce by default
@@ -124,7 +124,7 @@ describe('useKeyedDebouncedCallback', () => {
 
   it('Should debounce callbacks by key and execute the last one for each key', async () => {
     const { result } = renderHook(() =>
-      useKeyedDebouncedCallback(getSomeData, debounceTime)
+      useKeyedDebounceCallback(getSomeData, debounceTime)
     );
 
     // Call the debounced callback without key, it will debounce by default
@@ -145,7 +145,7 @@ describe('useKeyedDebouncedCallback', () => {
 
   it('Should fail if passing non valid key', async () => {
     const { result } = renderHook(() =>
-      useKeyedDebouncedCallback(getSomeData, debounceTime)
+      useKeyedDebounceCallback(getSomeData, debounceTime)
     );
 
     // Call the debounced callback without key, it will debounce by default
