@@ -25,3 +25,6 @@ jobs:
 
       - name: Prettier check
         run: yarn format:check
+
+      - name: Specs
+        run: yarn test --run
