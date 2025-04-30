@@ -3,7 +3,8 @@
   "packageManager": "yarn@4.9.1",
   "scripts": {
     "test": "vitest",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@testing-library/react": "^16.3.0",
