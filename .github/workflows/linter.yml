@@ -17,7 +17,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install dependencies
-        run: yarn
+        run: yarn install --immutable
+
       - name: Prettier check
         run: yarn format:check
