@@ -1,6 +1,5 @@
 {
   "name": "ydnap-templates",
-  "packageManager": "yarn@4.9.1",
   "scripts": {
     "test": "vitest",
     "format": "prettier --write .",
