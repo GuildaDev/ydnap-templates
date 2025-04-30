@@ -1,0 +1,27 @@
+name: Code Quality
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: linter-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Prettier check
+        run: yarn format:check
