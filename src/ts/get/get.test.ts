@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { get } from '.';
+import get from '.';
 
 describe('get', () => {
   it('should return the value at the specified path', () => {
